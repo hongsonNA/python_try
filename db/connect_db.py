@@ -1,13 +1,11 @@
 import pymysql.cursors
 
 # Connect to the database
-def getConnect():
-    connection = pymysql.connect(host='127.0.0.1',
+connection = pymysql.connect(host='127.0.0.1',
                              user='root',
                              password='123456',
                              database='PythonChatRoom',
                              cursorclass=pymysql.cursors.DictCursor)
-    return connection
 # with connection:
 #     with connection.cursor() as cursor:
 #         # Create a new record

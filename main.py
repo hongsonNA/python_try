@@ -23,6 +23,7 @@ app.config["DEBUG"] = True
 @app.route('/', methods=['GET'])
 def home():
     getListRoom = Model.listRoom()
+    return getListRoom
     return render_template('chat/room_chat.html', listData=getListRoom)
 
 if __name__ == '__main__':

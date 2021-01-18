@@ -1,7 +1,7 @@
 from db.connect_db import connection
 from flask import render_template
 
-class Model():
+class Model:
     @classmethod
     def listRoom(self):
         try:
@@ -11,11 +11,21 @@ class Model():
                 # Execute query.
                 cursor.execute(sql)
                 print("cursor.description: ", cursor.description)
-                print()
-                for row in cursor:
-                    print(row)
-        finally:
-            # Close connection.
+                row = cursor.fetchall()
+                return row
+        except:
             connection.close()
-        return row
-
+    def create(self, data, table_name):
+        sql = "INSERT INTO " + table_name + "(" + data + ") VALUES (" + data + ")"
+        return sql
+        try:
+            with connection.cursor() as cursor:
+                # SQL
+                sql = "INSERT INTO "+table_name+"("+data+") VALUES ("+data+")"
+                # Execute query.
+                cursor.execute(sql)
+                print("cursor.description: ", cursor.description)
+                row = cursor.fetchall()
+                return row
+        except:
+            connection.close()

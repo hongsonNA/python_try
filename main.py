@@ -15,7 +15,9 @@
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 import flask
 from model.model import Model
+from controller.controller import Controller
 from flask import Flask, render_template
+import os
 
 app = flask.Flask(__name__, template_folder='views')
 app.config["DEBUG"] = True
@@ -23,8 +25,17 @@ app.config["DEBUG"] = True
 @app.route('/', methods=['GET'])
 def home():
     getListRoom = Model.listRoom()
-    return getListRoom
     return render_template('chat/room_chat.html', listData=getListRoom)
+@app.route('/test', methods=['GET'])
+def test():
+    myIndex = Controller.home(self='')
+    return myIndex
+# myLogin
+@app.route('/login', methods=['GET','POST'])
+def login():
+    return Controller.login(self='')
+
+
 
 if __name__ == '__main__':
     app.run()

@@ -16,12 +16,13 @@
 import flask
 from model.model import Model
 from controller.controller import Controller
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+
 import os
 
 app = flask.Flask(__name__, template_folder='views')
 app.config["DEBUG"] = True
-
+app.config["SECRET_KEY"] = '79537d00f4834892986f09a100aa1edf'
 @app.route('/', methods=['GET'])
 def home():
     getListRoom = Model.listRoom()
@@ -33,9 +34,9 @@ def test():
 # myLogin
 @app.route('/login', methods=['GET','POST'])
 def login():
+    # if request.method == 'POST':
+    #     return request
     return Controller.login(self='')
-
-
 
 if __name__ == '__main__':
     app.run()

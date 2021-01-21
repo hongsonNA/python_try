@@ -23,7 +23,7 @@ import os
 app = flask.Flask(__name__, template_folder='views')
 app.config["DEBUG"] = True
 app.config["SECRET_KEY"] = '79537d00f4834892986f09a100aa1edf'
-@app.route('/', methods=['GET'])
+@app.route('/room', methods=['GET'])
 def home():
     getListRoom = Model.listRoom()
     return render_template('chat/room_chat.html', listData=getListRoom)
